@@ -22,9 +22,7 @@ function day4_2(file::String)
     end
 
     for (gamenum, s) = enumerate(scores)
-        for i = gamenum+1:min(gamenum+s, length(scores))
-            distribution[i] += distribution[gamenum]
-        end
+        foreach(i -> distribution[i] += distribution[gamenum], gamenum+1:min(gamenum+s, length(scores)))
     end
     println(sum(distribution))
 end
