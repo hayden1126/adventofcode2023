@@ -1,5 +1,5 @@
 # Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
-function day4_1(file::String)
+function day4_1(file::String)::Nothing
     lines = readlines(file)
     sum = 0
 
@@ -11,7 +11,7 @@ function day4_1(file::String)
     println(sum)
 end
 
-function day4_2(file::String)
+function day4_2(file::String)::Nothing
     lines = readlines(file)
     scores = fill(0, length(lines))
     distribution = fill(1, length(lines))
