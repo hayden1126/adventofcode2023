@@ -66,7 +66,7 @@ function day5_2(file::String)::Nothing
         testresult += 1
     end
 end
-l
+
 file = "inputs/day5.txt"
 @time day5_1(file)
 @time day5_2(file)
