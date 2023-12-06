@@ -13,7 +13,7 @@ function day6_2(file::String)::Nothing
     println(get_range((timelimit, rec_dist)))
 end
 
-function get_range(race::Tuple{Int64, Int64})::Int
+function get_range(race::Tuple{Int, Int})::Int
     a, b = race[1]÷2, race[1]÷2 + 1 # race is (timelimit, rec_dist)
     while (race[1]-a)*a > race[2]
         a -= 1
