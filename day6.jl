@@ -14,12 +14,11 @@ function day6_2(file::String)::Nothing
 end
 
 function get_range(race::Tuple{Int64, Int64})::Int
-    (timelimit, rec_dist) = race
-    a, b = timelimit÷2, timelimit÷2 + 1
-    while (timelimit-a)*a > rec_dist
+    a, b = race[1]÷2, race[1]÷2 + 1 # race is (timelimit, rec_dist)
+    while (race[1]-a)*a > race[2]
         a -= 1
     end
-    while (timelimit-b)*b > rec_dist
+    while (race[1]-b)*b > race[2]
         b += 1
     end
     return (b - a - 1)
