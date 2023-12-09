@@ -18,7 +18,7 @@ function day9_2(file::String)::Nothing
 end
 
 function levels(line::String)::Vector{Vector{Int}}
-    difference(nums::Vector{Int}) = [nums[i+1] - n for (i, n) = enumerate(nums[1:end-1])]
+    difference(nums::Vector{Int}) = Int[nums[i+1] - n for (i, n) = enumerate(nums[1:end-1])]
     levels = Vector[[parse(Int, n) for n = split(line)]]
     while !allequal(levels[end])
         push!(levels, difference(levels[end]))
