@@ -2,7 +2,7 @@ using Combinatorics
 function day11(file::String; emptydistance::Int=2)::Nothing
     lines = readlines(file)
     tmp = [Int8(char == '#' ? 1 : 0) for line in lines for char in line] # 1 -> #, 0 -> .
-    spacemap = reshape(tmp, length(lines[1]), length(lines)) # column and rows are switched
+    spacemap = transpose(reshape(tmp, length(lines[1]), length(lines)))
 
     empty_rows = [i for i in 1:size(spacemap, 1) if iszero(spacemap[i, :])]
     empty_cols = [j for j in 1:size(spacemap, 2) if iszero(spacemap[:, j])]
