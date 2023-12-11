@@ -66,7 +66,5 @@ function day10(file)
     println("Part 2: ", area)
 end
 
-
-file = "test.txt"
 file = "inputs/day10.txt"
 @time day10(file)
