@@ -23,7 +23,7 @@ function day10(file)
 
     for (dx, dy) = [(-1,0),(1,0),(0,-1),(0,1)]
         pipe = pipemap[y+dy][x+dx]
-        !(pipe in keys(pipe2vec)) && continue
+        !haskey(pipe2vec, pipe) && continue
         for (dx2, dy2) = pipe2vec[pipe]
             dx == -dx2 && dy == -dy2 && push!(queue, (1, (x+dx, y+dy)))
         end
@@ -33,7 +33,7 @@ function day10(file)
 
     while !isempty(queue)
         d, (x, y) = popfirst!(queue)
-        (x, y) in keys(dists) && continue
+        haskey(dists, (x, y)) && continue
         dists[(x, y)] = d
 
         for (dx, dy) = pipe2vec[pipemap[y][x]]
@@ -47,20 +47,20 @@ function day10(file)
     area = 0
     for (y, line) = enumerate(pipemap)
         for (x, pipe) = enumerate(line)
-            (x, y) in keys(dists) && continue
+            haskey(dists, (x, y)) && continue
 
             crosses = 0
             x2, y2 = x, y
 
             while x2 < width && y2 < height
                 nextpipe = pipemap[y2][x2]
-                if (x2, y2) in keys(dists) && !(nextpipe in ['L', '7'])
+                if haskey(dist, (x2, y2)) && !(nextpipe in ['L', '7'])
                     crosses += 1
                 end
                 x2 += 1
                 y2 += 1
             end
-            area += crosses%2 == 1 ? 1 : 0
+            area += isodd(crosses) ? 1 : 0
         end
     end
     println("Part 2: ", area)

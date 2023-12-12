@@ -23,7 +23,7 @@ end
 
 function day5_1(file::String)::Nothing
     lines = readlines(file)
-    seeds = [parse(Int, i) for i = split(lines[1][7:end])]
+    seeds = parse.(Int, split(lines[1][7:end]))
     mappings = compile(lines[2:end])
 
     for maps = mappings
@@ -41,7 +41,7 @@ end
 
 function day5_2(file::String)::Nothing
     lines = readlines(file)
-    seeds = [parse(Int, i) for i = split(lines[1][7:end])]
+    seeds = parse.(Int, split(lines[1][7:end]))
     mappings = compile(reverse(lines); reverse=true)
 
     testresult = 0
